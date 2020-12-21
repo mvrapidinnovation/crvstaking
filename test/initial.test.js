@@ -177,6 +177,19 @@ contract('Curve.fi', ([owner, investor]) => {
 
                 result = await CRVtoken.balanceOf(investor);
                 console.log("Investor CRV: ", result.toString());
+
+                result = await crvToken.balanceOf(investor);
+                console.log("Investor 3CRV: ", result.toString());
+            });
+
+            it('withdrawing from guage', async() => {
+                await gauge.withdraw(toDai('100'), { from: investor });
+
+                result = await CRVtoken.balanceOf(investor);
+                console.log("Investor CRV: ", result.toString());
+
+                result = await crvToken.balanceOf(investor);
+                console.log("Investor 3CRV: ", result.toString());
             });
             
         });
